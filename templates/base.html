@@ -4,20 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/main.css">
     <title>Maraphonk</title>
     {% load bootstrap5 %}
     {% bootstrap_css %}
     {% bootstrap_javascript %}
 </head>
 <body>
-    <ul class="nav bg-info">
-        <li class="nav-item">
-          <a class="nav-link link-light" href="/">HOME</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link link-light" href="/members">MEMBERS</a>
-        </li>
-      </ul>
     {% block body %}
     {% endblock %}
 </body>

@@ -16,8 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from marathon.views import MainView
+
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
+    path('', MainView.as_view(), name='main'),
     path('accounts/', include('accounts.urls')),
 ]
