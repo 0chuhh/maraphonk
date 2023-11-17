@@ -29,11 +29,19 @@ class Route(models.Model):
     location = models.CharField(
         max_length=255
     )
-    map = models.ImageField()
+    map = models.ImageField(upload_to="media/images")
+
+
+class RouteCheckpoint(models.Model):
+    route = models.ForeignKey(
+        Route,
+        on_delete=models.CASCADE
+    )
     checkpoint = models.ForeignKey(
         Checkpoint,
         on_delete=models.CASCADE
     )
+    distance_from_start = models.FloatField()
 
 
 class Runners(models.Model):

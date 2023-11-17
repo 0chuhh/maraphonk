@@ -7,3 +7,7 @@ class Inventory(models.Model):
     )
     count = models.IntegerField()
     need_to_order = models.IntegerField()
+
+    def __str__(self):
+        return f'{self.id} - {self.name}'
+
