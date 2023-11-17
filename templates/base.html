@@ -11,7 +11,14 @@
     {% bootstrap_javascript %}
 </head>
 <body>
-    {% block body %}
-    {% endblock %}
+<div class="d-flex h-100 flex-column">
+    {% include 'main_page/../layout/header.html' %}
+    <div class="m-5 d-flex h-100 flex-column">
+        {% block body %}
+        {% endblock %}
+    </div>
+</div>
+{% block scripts %}
+{% endblock %}
 </body>
 </html>
