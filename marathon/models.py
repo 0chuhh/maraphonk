@@ -11,6 +11,10 @@ class Marathon(models.Model):
     description = models.CharField(
         max_length=255
     )
+    country = models.CharField(max_length=255,default="Russia")
+
+    def __str__(self):
+        return self.name
 
 
 class Checkpoint(models.Model):
@@ -21,6 +25,9 @@ class Checkpoint(models.Model):
         max_length=255
     )
 
+    def __str__(self):
+        return self.name
+
 
 class Route(models.Model):
     name = models.CharField(
@@ -30,6 +37,9 @@ class Route(models.Model):
         max_length=255
     )
     map = models.ImageField(upload_to="media/images")
+
+    def __str__(self):
+        return self.name
 
 
 class RouteCheckpoint(models.Model):
@@ -42,6 +52,9 @@ class RouteCheckpoint(models.Model):
         on_delete=models.CASCADE
     )
     distance_from_start = models.FloatField()
+
+    def __str__(self):
+        return f"{self.route.name} {self.distance_from_start}km"
 
 
 class Runners(models.Model):
@@ -65,3 +78,6 @@ class Runners(models.Model):
         Route,
         on_delete=models.CASCADE
     )
+
+    def __str__(self):
+        return f"{self.user.name} {self.marathon.name}"

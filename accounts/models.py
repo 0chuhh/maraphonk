@@ -7,6 +7,7 @@ class User(AbstractUser):
     middle_name = models.CharField(max_length=100, blank=True)
     last_name = models.CharField(max_length=100)
     image = models.ImageField(upload_to='media/accounts/avatars/', blank=True, default='')
+    country = models.CharField(max_length=255,default="Russia")
 
     @property
     def full_name(self):

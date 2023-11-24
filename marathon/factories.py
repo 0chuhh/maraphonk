@@ -3,7 +3,8 @@ import random
 import factory
 from django.core.files.base import ContentFile
 from factory.django import DjangoModelFactory
-
+from sponsorship.models import Sponsorship
+from accounts.models import User
 from .models import *
 
 
@@ -13,6 +14,7 @@ class MarathonFactory(DjangoModelFactory):
 
     name = factory.Faker("sentence")
     description = factory.Faker("sentence")
+    country = factory.Faker("country")
 
 
 class CheckpointFactory(DjangoModelFactory):
@@ -36,3 +38,18 @@ class RouteFactory(DjangoModelFactory):
             ), 'example.jpg'
         )
     )
+
+
+class RouteCheckpointsFactory(DjangoModelFactory):
+    class Meta:
+        model = RouteCheckpoint
+
+    route = factory.SubFactory(RouteFactory)
+    checkpoint = factory.SubFactory(CheckpointFactory)
+    distance_from_start = factory.LazyAttribute(lambda x: random.randrange(1,20))
+
+
+class SponsorshipFactory(DjangoModelFactory):
+    class Meta:
+        model = Sponsorship
+
