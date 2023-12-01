@@ -6,7 +6,7 @@ from factory.django import DjangoModelFactory
 from .models import Inventory
 
 
-class InventoryOrgFactory(DjangoModelFactory):
+class InventoryFactory(DjangoModelFactory):
     class Meta:
         model = Inventory
 

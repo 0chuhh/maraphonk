@@ -9,9 +9,11 @@ class UserFactory(DjangoModelFactory):
     class Meta:
         model = User
 
-    username = factory.Faker('email')
-    first_name = factory.Faker("first_name")
-    middle_name = factory.Faker("first_name")
-    last_name = factory.Faker("first_name")
-    country = factory.Faker("country")
-
+    with factory.Faker.override_default_locale('ru_RU'):
+        email = factory.Faker('email')
+        username = factory.Faker('email')
+        first_name = factory.Faker("first_name")
+        middle_name = factory.Faker("first_name")
+        last_name = factory.Faker("first_name")
+        country = factory.Faker("country")
+        factory.PostGenerationMethodCall('set_password', 'adm1n')

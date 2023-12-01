@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from .managers import UserManager
 
 
 class User(AbstractUser):
@@ -8,6 +9,11 @@ class User(AbstractUser):
     last_name = models.CharField(max_length=100)
     image = models.ImageField(upload_to='media/accounts/avatars/', blank=True, default='')
     country = models.CharField(max_length=255,default="Russia")
+    email = models.EmailField(max_length=255, unique=True)
+    objects = UserManager()
+
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = []
 
     @property
     def full_name(self):

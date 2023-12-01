@@ -80,4 +80,4 @@ class Runners(models.Model):
     )
 
     def __str__(self):
-        return f"{self.user.name} {self.marathon.name}"
+        return f"{self.user.full_name}: {self.marathon.name}"

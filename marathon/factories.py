@@ -6,7 +6,8 @@ from factory.django import DjangoModelFactory
 from sponsorship.models import Sponsorship
 from accounts.models import User
 from .models import *
-
+from charitable_organization.factories import CharitableOrgFactory
+from inventory.factories import InventoryFactory
 
 class MarathonFactory(DjangoModelFactory):
     class Meta:
@@ -49,7 +50,13 @@ class RouteCheckpointsFactory(DjangoModelFactory):
     distance_from_start = factory.LazyAttribute(lambda x: random.randrange(1,20))
 
 
-class SponsorshipFactory(DjangoModelFactory):
+class RunnersFactory(DjangoModelFactory):
     class Meta:
-        model = Sponsorship
+        model = Runners
+
+    # user = User.objects.filter(groups__name='runner')[random.randrange(0, 10)]
+    marathon = factory.SubFactory(MarathonFactory)
+    charitable_organization = factory.SubFactory(CharitableOrgFactory)
+    inventory_item = factory.SubFactory(InventoryFactory)
+    route = factory.SubFactory(RouteFactory)
 

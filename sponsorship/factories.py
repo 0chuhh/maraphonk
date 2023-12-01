@@ -13,8 +13,8 @@ class SponsorshipFactory(DjangoModelFactory):
     class Meta:
         model = Sponsorship
 
-    sponsor = User.objects.filter(groups__name='sponsor')[random.randrange(0,10)]
-    runner = User.objects.filter(groups__name='runner')[random.randrange(0,10)]
+    # sponsor = User.objects.filter(groups__name='sponsor')[random.randrange(0,10)]
+    # runner = User.objects.filter(groups__name='runner')[random.randrange(0,10)]
 
     marathon = factory.SubFactory(MarathonFactory)
     sum = 1000
