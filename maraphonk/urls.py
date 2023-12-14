@@ -16,11 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from marathon.views import MainView
+from marathon.views import MainView, BMI, BMR
 
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
     path('', MainView.as_view(), name='main'),
+    path('bmi/', BMI.as_view(), name='bmi'),
+    path('bmr/', BMR.as_view(), name='bmr'),
     path('accounts/', include('accounts.urls')),
 ]

@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+
+{% endblock %}
+
+{% block body %}
+
+  <div class="content">
+    <h1 class="role">
+
+    </h1>
+    <p>
+      Пожалуйста, заполните всю информацию,
+      чтобы зарегистрироваться
+    </p>
+
+    <form id="sign-up" class="sing-up-form" method="post">
+      {% csrf_token %}
+      <div class="form-box">
+        <div>
+          <span>
+            {{ form.email.label_tag }}
+            {{ form.email }}
+          </span>
+          <span>
+            {{ form.password1.label_tag }}
+            {{ form.password1 }}
+          </span>
+          <span>
+            {{ form.password2.label_tag }}
+            {{ form.password2 }}
+          </span>
+          <span>
+            {{ form.first_name.label_tag }}
+            {{ form.first_name }}
+          </span>
+          <span>
+            {{ form.last_name.label_tag }}
+            {{ form.last_name }}
+          </span>
+        </div>
+
+        <div>
+          <div>
+            <img
+              src="{% static 'imgs/user.svg' %}"
+              id="photo_preview"
+              height="150px"
+              width="150px"
+              alt="Photo"
+            />
+            <span>
+              {{ form.photo.label_tag }}
+              <input
+                id="id_photo"
+                type="file"
+                name="photo"
+                accept="image/*"
+                onchange="updatePreview(this, 'photo_preview')"
+              >
+            </span>
+          </div>
+          <span>
+            {{ form.birth_date.label_tag }}
+            {{ form.birth_date }}
+          </span>
+          <span>
+            {{ form.country.label_tag }}
+            {{ form.country }}
+          </span>
+        </div>
+      </div>
+
+      {{ form.errors }}
+
+      <div>
+        <button type="submit">Регистрация</button>
+        <button type="button" onclick="history.back()">Отмена</button>
+      </div>
+    </form>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{% static 'js/registration/index.js' %}">
+getRole()
+  </script>
+{% endblock %}

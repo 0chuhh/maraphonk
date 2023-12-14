@@ -1,5 +1,30 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from .models import User
+
+
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
+
+class CommonUserCreationForm(UserCreationForm):
+    photo = forms.FileField(required=False)
+    role = forms.CharField()
+
+    class Meta:
+        model = User
+        fields = (
+            "first_name",
+            "middle_name",
+            "last_name",
+            "image",
+            "country",
+            "email",
+        )
+
+        widgets = {
+            "birth_date": DateInput(),
+        }
 
 
 class LoginForm(forms.Form):

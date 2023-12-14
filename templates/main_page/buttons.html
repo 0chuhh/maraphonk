@@ -1,15 +1,16 @@
+{% load static %}
 <div class="d-flex flex-column  h-100 justify-content-stretch gap-5">
-    <div onClick="IWantToBeRunner(event)" class="btn btn-secondary h-100 d-flex justify-content-center align-items-center">
+    <div onclick="IWantToBeRunner(event)" class="btn btn-secondary h-100 d-flex justify-content-center align-items-center">
         Я хочу стать бегуном
     </div>
     <div class="btn btn-secondary h-100 d-flex justify-content-center align-items-center">
-        Я хочу стать бегуном
+        Я хочу стать стать спонсором бегуна
     </div>
     <div class="btn btn-secondary h-100 d-flex justify-content-center align-items-center">
-        Я хочу стать бегуном
+        Я хочу узнать больше о событии
     </div>
 
     {% block scripts %}
-        <script src="/static/js/main_page/index.js"></script>
+        <script src=" {% static 'js/main_page/index.js' %}"></script>
     {% endblock %}
 </div>

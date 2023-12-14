@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+    <div class="container">
+        <h1>BMR Calculator</h1>
+        <div class="display">
+            <p id="result">806.0 калорий/день</p>
+
+        </div>
+        <div class="row">
+            <div class="d-flex gap-3">
+                <input type="radio" id="gender" name="gender" value="masc" checked onchange="calculate()">
+                <div>Male</div>
+            </div>
+            <div class="d-flex gap-3">
+                <input type="radio" id="gender" name="gender" value="fem" onchange="calculate()">
+                <div>Female</div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <input type="range" min="1" max="100" value="5" id="age" oninput="calculate()">
+            <span id="age-val">5 лет</span>
+        </div>
+        <div class="row">
+            <input type="range" min="20" max="200" value="20" id="weight" oninput="calculate()">
+            <span id="weight-val">20 кг</span>
+        </div>
+        <div class="row">
+            <input type="range" min="100" max="250" value="100" id="height" oninput="calculate()">
+            <span id="height-val">100 см</span>
+        </div>
+
+
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'js/bmr/index.js' %}"></script>
+{% endblock %}

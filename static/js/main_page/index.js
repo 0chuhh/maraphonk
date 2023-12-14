@@ -1,3 +1,3 @@
 function IWantToBeRunner(event){
-    console.log(event)
+    window.location.href = '/runner/login'
 }

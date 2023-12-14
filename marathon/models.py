@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 from charitable_organization.models import CharitableOrg
 from inventory.models import Inventory
+from datetime import datetime
 
 
 class Marathon(models.Model):
@@ -12,7 +13,7 @@ class Marathon(models.Model):
         max_length=255
     )
     country = models.CharField(max_length=255,default="Russia")
-
+    date_start = models.DateTimeField(default=datetime.now)
     def __str__(self):
         return self.name
 
