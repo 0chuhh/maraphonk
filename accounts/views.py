@@ -1,23 +1,13 @@
-from django.shortcuts import render
-from django.views.generic import TemplateView
 
-from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
-from django.contrib import messages
 from django.contrib.auth.views import LoginView
 
-from django.contrib.auth.models import Group
-from django.views.generic import TemplateView
 from django.contrib.auth import authenticate, login
 from django.shortcuts import redirect, render
 from django.contrib import messages
-from .models import User
 from django.views.generic import CreateView
-from .forms import CommonUserCreationForm
-import random
 from django.contrib.auth.models import Group
 
-from .models import *
 from .forms import *
 
 
@@ -55,10 +45,7 @@ class SignUp(CreateView):
                 country=form.cleaned_data.get('country'),
             )
             user.set_password(form.cleaned_data.get('password1'))
-            print(form.cleaned_data.get('role'))
             group = Group.objects.get(name=form.cleaned_data.get('role'))
-            print(group)
-            print(user)
             user.save()
             user = User.objects.get(email=form.cleaned_data.get('email'))
             user.groups.add(group)
@@ -68,5 +55,9 @@ class SignUp(CreateView):
             user = authenticate(email=email, password=raw_password)
             login(request, user)
             return redirect('main')
+        else:
+            messages.error(request, 'неккоректно заполнены поля!',
+                           extra_tags='alert alert-danger alert-dismissible fade show'
+                           )
 
-        return redirect('main')
+            return render(request, "registration/login.html", {"form": form})

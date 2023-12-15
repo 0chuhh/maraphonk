@@ -34,10 +34,14 @@ async function submit(event){
 
     const formData = new FormData(event.target)
     formData.append('role', getRole('en'))
-    await fetch('', {
+    const response = await fetch('', {
         method:"POST",
         body:formData
-    })
+    }).then((response) => {
+    return response.text();
+  }).then((html) => {
+    document.body.innerHTML = html
+  });
     // window.location = '/'
 }
 const roleElement = document.querySelector('.role')

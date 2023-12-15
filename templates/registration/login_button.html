@@ -3,6 +3,6 @@
         <a href="{% url 'logout' %}" class="btn btn-secondary">Выйти</a>
     {% else %}
         <a href="{% url 'login' %}" class="btn btn-secondary">Войти</a>
-        <a class="btn btn-secondary">Регистрация</a>
+        <a class="btn btn-secondary" href="http://localhost:8000/accounts/registration/runner/">Регистрация</a>
     {% endif %}
 </div>
