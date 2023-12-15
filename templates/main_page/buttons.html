@@ -1,14 +1,68 @@
 {% load static %}
 <div class="d-flex flex-column  h-100 justify-content-stretch gap-5">
-    <div onclick="IWantToBeRunner(event)" class="btn btn-secondary h-100 d-flex justify-content-center align-items-center">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="w-100 h-100 d-flex flex-column justify-content-stretch gap-5">
+                        <a
+                             href="http://localhost:8000/accounts/login"   
+                             class="btn btn-secondary h-100 d-flex justify-content-center align-items-center">
+                            Я участвовал ранее
+                        </a>
+                        <a
+                                href="http://localhost:8000/accounts/registration/runner/"
+                             class="btn btn-secondary h-100 d-flex justify-content-center align-items-center">
+                            Я новый участник
+                        </a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <div 
+         data-bs-toggle="modal" data-bs-target="#exampleModal"
+         class="btn btn-secondary h-100 d-flex justify-content-center align-items-center">
         Я хочу стать бегуном
     </div>
-    <div class="btn btn-secondary h-100 d-flex justify-content-center align-items-center">
+
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel2">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="w-100 h-100 d-flex flex-column justify-content-stretch gap-5">
+                        <a
+                             href="http://localhost:8000/accounts/login"   
+                             class="btn btn-secondary h-100 d-flex justify-content-center align-items-center">
+                            Я участвовал ранее
+                        </a>
+                        <a
+                                href="http://localhost:8000/accounts/registration/sponsor/"
+                             class="btn btn-secondary h-100 d-flex justify-content-center align-items-center">
+                            Я новый участник
+                        </a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div data-bs-toggle="modal" data-bs-target="#exampleModal2" class="btn btn-secondary h-100 d-flex justify-content-center align-items-center">
         Я хочу стать стать спонсором бегуна
     </div>
-    <div class="btn btn-secondary h-100 d-flex justify-content-center align-items-center">
+    <a href="http://localhost:8000/about/" class="btn btn-secondary h-100 d-flex justify-content-center align-items-center">
         Я хочу узнать больше о событии
-    </div>
+    </a>
 
     {% block scripts %}
         <script src=" {% static 'js/main_page/index.js' %}"></script>

@@ -16,12 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from marathon.views import MainView, BMI, BMR
+from marathon.views import MainView, BMI, BMR, MarathonAboutPage
 
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
     path('', MainView.as_view(), name='main'),
+    path('about/', MarathonAboutPage.as_view(), name='about'),
     path('bmi/', BMI.as_view(), name='bmi'),
     path('bmr/', BMR.as_view(), name='bmr'),
     path('accounts/', include('accounts.urls')),
