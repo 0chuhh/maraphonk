@@ -16,7 +16,7 @@
         {% endfor %}
     {% endif %}
     <div class="w-100 h-100 d-flex flex-column gap-5 justify-content-center align-items-center">
-        <form action="" method="post" class="d-flex flex-column gap-4">
+        <form id="login" action="" method="post" class="d-flex flex-column gap-4">
             {% csrf_token %}
             {% for field in form %}
                 <div class="form-group">

@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
+from django.contrib.auth.decorators import login_required
+
 from .models import Marathon
 
 class MainView(TemplateView):
@@ -17,3 +19,7 @@ class BMR(TemplateView):
 class MarathonAboutPage(TemplateView):
     template_name = "about/about.html"
     extra_context = {'marathon': Marathon.objects.get(name="Huge keep similar it pressure bring.")}
+
+
+class RunnerMenuPage(TemplateView):
+    template_name = "runner/menu.html"

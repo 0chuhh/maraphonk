@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from marathon.views import MainView, BMI, BMR, MarathonAboutPage
+from marathon.views import MainView, BMI, BMR, MarathonAboutPage, RunnerMenuPage
 
 
 urlpatterns = [
@@ -25,5 +25,6 @@ urlpatterns = [
     path('about/', MarathonAboutPage.as_view(), name='about'),
     path('bmi/', BMI.as_view(), name='bmi'),
     path('bmr/', BMR.as_view(), name='bmr'),
+    path('runner-menu/', RunnerMenuPage.as_view(), name='runner_menu'),
     path('accounts/', include('accounts.urls')),
 ]

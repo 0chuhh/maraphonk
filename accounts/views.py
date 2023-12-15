@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.views import LoginView
 
 from django.contrib.auth import authenticate, login
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, HttpResponse
 from django.contrib import messages
 from django.views.generic import CreateView
 from django.contrib.auth.models import Group
@@ -24,6 +24,24 @@ class MyLoginView(LoginView):
 
 class CustomLoginView(LoginView):
     template_name = "registration/login.html"
+
+
+    def post(self, request, *args, **kwargs):
+        print(request.POST)
+        email = request.POST['username']
+        raw_password = request.POST['password']
+        print(email)
+        print(raw_password)
+        user = authenticate(email=email, password=raw_password)
+        if user is not None:
+            login(request, user)
+            return redirect('runner_menu')
+        else:
+            messages.error(request, 'неккоректно заполнены поля!',
+                           extra_tags='alert alert-danger alert-dismissible fade show'
+                           )
+
+            return HttpResponse({'error': 'error'})
 
 
 class SignUp(CreateView):
@@ -60,4 +78,4 @@ class SignUp(CreateView):
                            extra_tags='alert alert-danger alert-dismissible fade show'
                            )
 
-            return render(request, "registration/login.html", {"form": form})
+            return HttpResponse({'error':'error'})

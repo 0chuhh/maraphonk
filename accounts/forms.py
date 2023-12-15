@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm,AuthenticationForm
 from .models import User
 
 
@@ -27,7 +27,7 @@ class CommonUserCreationForm(UserCreationForm):
         }
 
 
-class LoginForm(forms.Form):
+class LoginForm(AuthenticationForm):
     email = forms.EmailField(
         max_length=30,
         widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Email'}))
@@ -35,3 +35,10 @@ class LoginForm(forms.Form):
     password = forms.CharField(
         max_length=30,
         widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Password'}))
+
+    class Meta:
+        model = User
+        fields = (
+            "email",
+            "password",
+        )
